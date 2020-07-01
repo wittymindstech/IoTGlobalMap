@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>wtDash - Login</title>
+    <!-- Favicon -->
+    <link href="{% static "favicon.png" %}" rel="icon">
+    <link href="{% static "apple-touch-icon.png" %}" rel="apple-touch-icon">
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/bootstrap 4 min.css' %}" rel="stylesheet">
+</head>
+
+<body class="" style="background-color:#d6d4ce;">
+
+  <div class="container">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+      <div class="col-xl-8 col-lg-10 col-md-9 m-4">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <div class="row">
+              <div class="col-lg-10 m-auto">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                  </div>
+                  <form role="form" method="post" action="">
+
+                {% csrf_token %}
+
+                <div class="card-header">
+                  <h5 class="title">Login</h5>
+
+                  <h6 class="card-category">
+                      {% if msg %}
+                        <span class="text-danger">{{ msg }}</span>
+                      {% else %}
+
+                        Use default credentials: admin / redhat123
+
+                      {% endif %}
+                  </h6>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row">
+
+                      <div class="col-md-12 px-md-1">
+                        <div class="form-group">
+                          <label>Username</label>
+                          {{ form.username }}
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="row">
+
+                      <div class="col-md-12 px-md-1">
+                        <div class="form-group">
+                          <label>Password</label>
+                          {{ form.password }}
+                        </div>
+                      </div>
+
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                  <button type="submit" name="login" class="btn btn-fill btn-primary">Login</button>
+                  &nbsp; &nbsp;
+                  Don't have an account? <a href="{% url 'register' %}" class="text-primary">Create Account</a>
+                </div>
+
+              </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+</body>
+
+</html>

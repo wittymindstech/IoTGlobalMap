@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+{% block body %}
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Global IOT Data</h1>
+          </div>
+          <div id='map' style='width: 1100px; height: 425px;'></div>
+        </div>
+        <!-- /.container-fluid -->
+
+        <script>
+        mapboxgl.accessToken = "{{map_access_token}}";
+        var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11'
+        });
+        </script>
+      </div>
+      <!-- End of Main Content -->
+    </div>
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Wittyminds Technology 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+  <!-- End of Page Wrapper -->
+
+{% endblock %}
