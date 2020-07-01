@@ -1,0 +1,179 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+{% block body %}
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">wtDashboard</h1>
+          </div>
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Home Lock</div>
+                      <div class="col row mr-2">
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><span class="badge badge-success">Active</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Refrigerator</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><span class="badge badge-success">Active</span></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fad fa-refrigerator fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Air Conditioner</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><span class="badge badge-danger">Inactive</span></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fad fa-air-conditioner fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">CCTV</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"><span class="badge badge-warning">Not Connected</span></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fad fa-cctv fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <!-- 1 -->
+            <div class="col-xl-6 col-lg-6">
+              <!-- Collapsable Card Example -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#collapseCard1" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCard1">
+                  <h6 class="m-0 font-weight-bold text-primary">TV</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse show" id="collapseCard1">
+                  <div class="card-body">
+                      <button type="button" class="btn btn-info btn-sm">Get Status <i class="fas fa-wifi"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="col-xl-6 col-lg-6">
+              <!-- Collapsable Card Example -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#collapseCard2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCard2">
+                  <h6 class="m-0 font-weight-bold text-primary">Refrigerator</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse show" id="collapseCard2">
+                  <div class="card-body">
+                    <button type="button" class="btn btn-info btn-sm">Get Status <i class="fas fa-wifi"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- 3 -->
+            <div class="col-xl-6 col-lg-6">
+              <!-- Collapsable Card Example -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#collapseCard3" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCard3">
+                  <h6 class="m-0 font-weight-bold text-primary">Air Conditioner</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse show" id="collapseCard3">
+                  <div class="card-body">
+                    <button type="button" class="btn btn-info btn-sm">Get Status <i class="fas fa-wifi"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4 Chart -->
+            <div class="col-xl-6 col-lg-6">
+              <!-- Collapsable Card Example -->
+              <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#collapseCard4" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCard4">
+                  <h6 class="m-0 font-weight-bold text-primary">CCTV</h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse show" id="collapseCard4">
+                  <div class="card-body">
+                   <button type="button" class="btn btn-info btn-sm">Get Status <i class="fas fa-wifi"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+    </div>
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Wittyminds Technology 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+  <!-- End of Page Wrapper -->
+
+{% endblock %}

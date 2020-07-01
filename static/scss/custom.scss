@@ -1,0 +1,14 @@
+//@import "functions";
+//@import "variables";
+
+/* -------begin customization-------- */
+
+/* simply assign the value */
+$body-bg: #eeeeee;
+
+/* or, use an existing variable */
+
+/* -------end customization-------- */
+
+/* finally, import Bootstrap to set the changes! */
+@import "../vendor/bootstrap/scss/bootstrap.scss";
