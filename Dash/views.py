@@ -2,11 +2,18 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from rest_framework.response import Response
 from .forms import LoginForm, SignUpForm
-from django.http import HttpResponse
 from django.template import loader
 from django import template
-
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
+from rest_framework.renderers import TemplateHTMLRenderer
+from rest_framework.views import APIView
+from django.shortcuts import get_object_or_404
+from .models import Device
+from .serializer import DeviceSerializer
 
 @login_required(login_url="/login/")
 def index(request):
@@ -75,3 +82,23 @@ def pages(request):
 def global_view(request):
     map_access_token = "pk.eyJ1IjoiMnlhZGF2cmFqbmVlc2giLCJhIjoiY2pya2MycXFqMGp3bzQ0cXcxOWpvMTJnaCJ9.qacSuG9YNHGkh6_KQ_R3Hg"
     return render(request, "global.html", {"map_access_token":map_access_token})
+
+
+@api_view(['POST'])
+@csrf_exempt
+class add_device(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'addDevice.html'
+
+    def get(self, request):
+        device = get_object_or_404(Device, pk=id)
+        serializer = DeviceSerializer(device)
+        return Response({'serializer': serializer, 'profile': device})
+
+    def post(self, request, pk):
+        device = get_object_or_404(Device, pk=id)
+        serializer = DeviceSerializer(device, data=request.data)
+        if not serializer.is_valid():
+            return Response({'serializer': serializer, 'device': device})
+        serializer.save()
+        return redirect('profile-list')

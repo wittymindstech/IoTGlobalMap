@@ -8,5 +8,6 @@ urlpatterns = [
     path('register/', views.register, name="register"),
     path("logout/", LogoutView.as_view(), name="logout"),
     path('global/', views.global_view, name="global"),
+    path('addDevice/', views.add_device, name="addDevice"),
     re_path(r'^.*\.html', views.pages, name='pages'),
 ]
