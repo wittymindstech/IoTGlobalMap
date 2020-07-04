@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load rest_framework %}
+{% block title %} Home {% endblock %}
+{% block body %}
+      <!-- Main Content -->
+    <div id="content">
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Add IOT Device</h1>
+          </div>
+
+            <form method="post" class="form floating-label" accept-charset="utf-8">
+          <div class="card">
+              <div class="card-head" style="background-color: #0e7fa9">
+                  <header style="color: white">Add a Department</header></div>
+					<div class="">
+						<div class="card card-body center-block" style="width: 50%; margin-top: 20px;">
+							<br/><br/>
+                            {% if error %}
+                            <div class="alert-danger text-center alert"> <strong>Error: </strong>{{ error }}</div>
+                            {% endif %}
+                            <form action="{% url 'addDevice' pk=device.pk %}" method="POST">
+                                {% csrf_token %}
+                                {% render_form serializer %}
+                                <input type="submit" value="Save">
+                            </form>
+						</div>
+					</div>
+          </div>
+          <div class="col-xs-12 text-right">
+
+    </div>
+      </form>
+        </div>
+      <!-- End of Main Content -->
+    </div>
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Wittyminds Technology 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+  <!-- End of Page Wrapper -->
+
+{% endblock %}

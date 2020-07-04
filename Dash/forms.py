@@ -44,3 +44,23 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
+
+class AddDeviceForm(forms.Form):
+    device_name = forms.CharField(
+        required=True,
+        label='Device Name',
+        max_length=100,
+        widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
+    location = forms.CharField(
+        required=False,
+        label='Location',
+        max_length=50,
+        widget=forms.EmailInput(attrs={'class': 'form-control'})
+    )
+    device_type = forms.CharField(
+        required = False,
+        label = 'Device Type',
+        max_length = 100,
+        widget= forms.TextInput(attrs={'class': 'form-control'})
+    )
