@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from .forms import LoginForm, SignUpForm
 from django.template import loader
 from django import template
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from rest_framework.renderers import TemplateHTMLRenderer
@@ -42,21 +42,19 @@ def login_view(request):
 def register(request):
     msg = None
     success = False
+    form = SignUpForm(request.POST)
     if request.method == "POST":
-        form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get("username")
-            raw_password = form.cleaned_data.get("password1")
-            user = authenticate(username=username, password=raw_password)
-
-            msg = 'User created.'
+            password = form.cleaned_data.get("password")
+            user = authenticate(username=username, password=password)
+            msg = 'User is created.'
             success = True
-
-            return redirect("/login/")
-
+            login(request, user)
+            return HttpResponseRedirect("/login")
         else:
-            msg = 'Form is not valid'
+            msg = 'Form is not Valid'
     else:
         form = SignUpForm()
     return render(request, "register.html", {"form": form, "msg": msg, "success": success})
