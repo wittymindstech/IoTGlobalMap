@@ -2,9 +2,9 @@
 IoT Devices all over world sends real time data to Dashboard
 
 
-![](iotglobal1.png)
+![](iotglobal1.PNG)
 
-![](iotglobal2.png)
+![](iotglobal2.PNG)
 Steps to Execute
 
 `python manage.py migrate`
