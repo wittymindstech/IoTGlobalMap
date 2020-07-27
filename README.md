@@ -3,6 +3,7 @@
 IoT Devices all over world sends real time data to Dashboard
 
 
+
 For required libraries and additional software for GIS data, we added requirements.txt file and Software installation links in below this line, you just to follow this command.
 
 You have to install GeoDjango here is some link:-
@@ -32,4 +33,19 @@ Run some command for running the Project:
 3. python maage.py runserver
 
 ```
+=======
+
+Steps to Execute
+
+`python manage.py migrate`
+
+`python manage.py createsuperuser`
+
+`python maage.py runserver`
+
+![](IoTGlobal.png)
+
+![](iotglobal1.PNG)
+
+![](iotglobal2.PNG)
 
