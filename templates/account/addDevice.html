@@ -2,6 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block title %} Add Device {% endblock %}
+{{ form.media }}
 {% block body %}
 
       <!-- Main Content -->
@@ -24,10 +25,10 @@
                   <div class="form-group col-lg-8 col-md-8 mb-0">
                     {{ form.name | as_crispy_field }}
                   </div>
-                  <div class="form-group col-md-6 mb-0">
+                  <div class="form-group col-md-6 mb-4">
                       {{ form.location | as_crispy_field }}
                   </div>
-                  <div class="form-group col-lg-6 col-md-6 mb-4">
+                  <div class="form-group col-lg-6 col-md-6 mb-4 mt-4">
                       <button type="submit" class="btn btn-primary">Add</button>
                   </div>
             </form>
