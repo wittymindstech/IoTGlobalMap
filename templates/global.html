@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 {% load static %}
-{% block title %} Home {% endblock %}
+{% load leaflet_tags %}
+{% block title %} Global {% endblock %}
 {% block body %}
       <!-- Main Content -->
       <div id="content">
@@ -11,17 +12,11 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Global IOT Data</h1>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 w-100" id='map' style='height: 440px;'></div>
+          <div class="col-lg-12 col-md-12 col-sm-12 w-100">
+            {% leaflet_map "gis" callback="window.our_layers" %}
+          </div>
         </div>
         <!-- /.container-fluid -->
-
-        <script>
-        mapboxgl.accessToken = "{{map_access_token}}";
-        var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11'
-        });
-        </script>
       </div>
       <!-- End of Main Content -->
     </div>
@@ -33,6 +28,16 @@
           </div>
         </div>
       </footer>
+      <script type="text/javascript">
+        function our_layers(map,options){
+            var point = new L.GeoJSON.AJAX("{% url 'device_data' %}",{
+                onEachFeature: function(feature, layer){
+                    layer.bindPopup(feature.properties.name.toString());
+                }
+            });
+            point.addTo(map);
+        }
+      </script>
       <!-- End of Footer -->
   <!-- End of Page Wrapper -->
 

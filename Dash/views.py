@@ -1,19 +1,16 @@
 # Create your views here.
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from rest_framework.response import Response
-from .forms import LoginForm, SignUpForm
+from .forms import LoginForm, SignUpForm, AddDeviceForm
 from django.template import loader
 from django import template
-from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
-from rest_framework.renderers import TemplateHTMLRenderer
-from rest_framework.views import APIView
-from django.shortcuts import get_object_or_404
 from .models import Device
-from .serializer import DeviceSerializer
+from django.core.serializers import serialize
 
 @login_required(login_url="/login/")
 def index(request):
@@ -36,28 +33,25 @@ def login_view(request):
         else:
             msg = 'Error validating the form'
 
-    return render(request, "login.html", {"form": form, "msg": msg})
-
+    return render(request, "account/login.html", {"form": form, "msg": msg})
 
 def register(request):
     msg = None
     success = False
-    form = SignUpForm(request.POST)
-    if request.method == "POST":
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password")
-            user = authenticate(username=username, password=password)
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=raw_password)
             msg = 'User is created.'
             success = True
             login(request, user)
-            return HttpResponseRedirect("/login")
-        else:
-            msg = 'Form is not Valid'
+            return HttpResponseRedirect('/login')
     else:
         form = SignUpForm()
-    return render(request, "register.html", {"form": form, "msg": msg, "success": success})
+    return render(request, 'account/register.html', {'form': form, "msg": msg,"success": success})
 
 @login_required(login_url="/login/")
 def pages(request):
@@ -78,25 +72,21 @@ def pages(request):
 
 @login_required(login_url="/login/")
 def global_view(request):
-    map_access_token = "pk.eyJ1IjoiMnlhZGF2cmFqbmVlc2giLCJhIjoiY2pya2MycXFqMGp3bzQ0cXcxOWpvMTJnaCJ9.qacSuG9YNHGkh6_KQ_R3Hg"
-    return render(request, "global.html", {"map_access_token":map_access_token})
+    return render(request, "global.html")
 
+def device_data(request):
+    device = serialize("geojson", Device.objects.all())
+    return HttpResponse(device, content_type='json')
 
-@api_view(['POST'])
-@csrf_exempt
-class add_device(APIView):
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'addDevice.html'
+@login_required(login_url="/login/")
+def add_device(request):
+    if request.method == 'POST':
+        form = AddDeviceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Device Added successfully.')
+            return redirect('addDevice')
+    else:
+        form = AddDeviceForm()
+    return render(request, 'addDevice.html', {'form': form})
 
-    def get(self, request):
-        device = get_object_or_404(Device, pk=id)
-        serializer = DeviceSerializer(device)
-        return Response({'serializer': serializer, 'profile': device})
-
-    def post(self, request, pk):
-        device = get_object_or_404(Device, pk=id)
-        serializer = DeviceSerializer(device, data=request.data)
-        if not serializer.is_valid():
-            return Response({'serializer': serializer, 'device': device})
-        serializer.save()
-        return redirect('profile-list')
