@@ -49,3 +49,7 @@ Steps to Execute
 
 ![](iotglobal2.PNG)
 
+![](IOT1.PNG)
+
+![](IOT2.PNG)
+
