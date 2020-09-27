@@ -30,7 +30,7 @@ Run some command for running the Project:
 
 ```
 ```
-3. python maage.py runserver
+3. python manage.py runserver
 
 ```
 =======
