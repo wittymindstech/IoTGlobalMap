@@ -41,7 +41,7 @@ Steps to Execute
 
 `python manage.py createsuperuser`
 
-`python maage.py runserver`
+`python manage.py runserver`
 
 ![](IoTGlobal.png)
 
