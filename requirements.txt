@@ -6,7 +6,7 @@ django-crispy-forms==1.9.2
 django-imagekit==4.0.2
 django-leaflet==0.27.0
 django-starcross-gallery==1.0.8
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 gunicorn==20.0.4
 pilkit==2.0
 Pillow==7.2.0
