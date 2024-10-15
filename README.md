@@ -2,7 +2,12 @@
 
 IoT Devices all over world sends real time data to Dashboard
 
+#Installation Instruction 
 
+| RPI (Raspbian) | Linux ( Ubuntu)|
+| ------------- | ------------- |
+| [Postgres for RPI](https://pimylifeup.com/raspberry-pi-postgresql/)  | [Postgres for Ubuntu](https://ubuntu.com/server/docs/install-and-configure-postgresql)  |
+| [Apache For RPI](https://pimylifeup.com/raspberry-pi-apache/)  | [Apache for Ubuntu](https://ubuntu.com/tutorials/install-and-configure-apache#1-overview)  |
 
 For required libraries and additional software for GIS data, we added requirements.txt file and Software installation links in below this line, you just to follow this command.
 
@@ -55,3 +60,8 @@ Steps to Execute
 
 
 ![](flow.png)
+
+Here is references of IoT Devices:-
+ 1. https://builtin.com/articles/iot-devices
+ 2. https://www.techtarget.com/iotagenda/definition/IoT-device
+ 3. https://www.leorover.tech/post/raspberry-pi-or-arduino-when-to-choose-which
